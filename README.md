@@ -59,12 +59,11 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   model's crop, 384px), encoded by `VJEPA2Model.get_vision_features`,
   mean-pooled over patch tokens, and L2-normalized.
 
-  - **Evaluation** (`evaluate.py`): cosine similarity matrix ordered by class,
+- **Evaluation** (`evaluate.py`): cosine similarity matrix ordered by class,
   leave-one-out 1-NN classification accuracy (chance = 25%), and a 2-D PCA
   scatter. High accuracy + within-class -> between-class similarity is the
   evidence that V-JEPA2 extracts meaningful motion structure from the sim.
   ![Similarity matrix](assets/similarity_matrix.png)
-
 
 - **Perception without labels** (`unsupervised.py`): the strongest form of
   the claim. K-means over the episode embeddings with k chosen by silhouette
