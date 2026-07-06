@@ -91,7 +91,7 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   so the visualization uses an intermediate encoder layer (default 8) and each
   patch's deviation from its own temporal mean.
   * Brightness = motion energy
-  * Color = PCA of the deviation<\b>
+  * Color = PCA of the deviation
 
   ![Base wave side-by-side](assets/side_by_side/base_wave.gif)
 
