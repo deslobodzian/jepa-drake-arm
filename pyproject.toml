@@ -1,0 +1,28 @@
+[project]
+name = "jepa-drake-arm"
+version = "0.1.0"
+description = "V-JEPA2 video representations evaluated on Drake robot-arm simulations"
+requires-python = ">=3.10"
+dependencies = [
+    "drake",
+    "torch",
+    "torchvision",
+    "transformers",
+    "matplotlib",
+    "scikit-learn",
+    "imageio",
+    "imageio-ffmpeg",
+    "av",
+    "pillow",
+    "numpy",
+    "timm>=1.0.27",
+    "einops>=0.8.2",
+    "scipy>=1.15.3",
+]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
