@@ -92,6 +92,6 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   patch's deviation from its own temporal mean.
   * Brightness = motion energy
   * color = PCA of the deviation
-  [Base wave side-by-side](assets/side_by_side/base_wave.mp4)
+  ![Base wave side-by-side](assets/side_by_side/base_wave.mp4)
 
 
