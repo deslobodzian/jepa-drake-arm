@@ -63,7 +63,7 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   leave-one-out 1-NN classification accuracy (chance = 25%), and a 2-D PCA
   scatter. High accuracy + within-class -> between-class similarity is the
   evidence that V-JEPA2 extracts meaningful motion structure from the sim.
-  ![Similarity matrix](output/similarity_matrix.png)
+  ![Similarity matrix](assets/similarity_matrix.png)
 
 
 - **Perception without labels** (`unsupervised.py`): the strongest form of
@@ -71,7 +71,7 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   score discovers that there are exactly 4 motion types (k=4 wins), clusters
   them perfectly (adjusted Rand index 1.0 vs ground truth, revealed only
   post-hoc), and each cluster medoid retrieves only its own motion class.
-  ![Cluster](output/unsupervised/pca_by_cluster.png)
+  ![Cluster](assets/unsupervised/pca_by_cluster.png)
 
 
 - **Reward / progress signal** (`reward.py`): the RL recipe. One reference
@@ -84,7 +84,7 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   Caveat: raw cosine sits in a narrow band (~0.85-1.0) because the embedding
   space is anisotropic; RL use would normalize per-task (e.g. against the
   start-state similarity).
-  ![Reward curves](output/reward/reward_curves.png)
+  ![Reward curves](assets/reward/reward_curves.png)
 
 - **Side-by-side** (`visualize.py`): V-JEPA2 predicts in latent space, not
   pixels, so "what the model sees" is rendered from its patch tokens. Raw
@@ -93,6 +93,6 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   patch's deviation from its own temporal mean.
   * Brightness = motion energy
   * color = PCA of the deviation
-  [Base wave side-by-side](output/side_by_side/base_wave.mp4)
+  [Base wave side-by-side](assets/side_by_side/base_wave.mp4)
 
 
