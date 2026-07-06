@@ -65,23 +65,21 @@ Artifacts land in `output/`: per-episode MP4s, `embeddings.npz`,
   evidence that V-JEPA2 extracts meaningful motion structure from the sim.
   ![Similarity matrix](assets/similarity_matrix.png)
 
-- **Perception without labels** (`unsupervised.py`): the strongest form of
-  the claim. K-means over the episode embeddings with k chosen by silhouette
+- **Perception without labels** (`unsupervised.py`): K-means over the episode embeddings with k chosen by silhouette
   score discovers that there are exactly 4 motion types (k=4 wins), clusters
   them perfectly (adjusted Rand index 1.0 vs ground truth, revealed only
-  post-hoc), and each cluster medoid retrieves only its own motion class.
+  post-hoc), and each cluster gets only its own motion class.
   ![Cluster](assets/unsupervised/pca_by_cluster.png)
 
 
-- **Reward / progress signal** (`reward.py`): the RL recipe. One reference
-  episode of a reach-and-hold task defines a goal embedding (its final 1 s
-  window); test rollouts are scored by r(t) = cosine(embed(last 1 s), goal).
-  The nominal rollout's reward rises near-monotonically (Spearman 0.92) to
-  1.0, a mid-task stall converges below it, a weak reach plateaus a bit lower.
-  The wrong motion stays flat at the bottom,  a dense, correctly-ranked shaping
-  signal derived from a single demonstration video, no reward tuning.
-  Caveat: raw cosine sits in a narrow band (~0.85-1.0) because the embedding
-  space is anisotropic; RL use would normalize per-task (e.g. against the
+- **Reward / progress signal** (`reward.py`): One reference
+  episode of a reach-and-hold task has a goal embedding (its final 1 s
+  window). Test rollouts are scored by r(t) = cosine(embed(last 1 s), goal).
+  The rollout's reward rises to 1.0, a mid-task stall converges below it, a weak reach plateaus a bit lower.
+  The wrong motion stays flat at the bottom,  a dense, correctly ranked shaping
+  signal found from a single demonstration video, no reward tuning.
+  Issue: raw cosine sits in a narrow band (~0.85-1.0) because the embedding
+  space is anisotropic, RL use would likely normalize per-task (e.g. against the
   start-state similarity).
   ![Reward curves](assets/reward/reward_curves.png)
 
